@@ -10,6 +10,12 @@ candle.onmousedown = function(event) {
     let shiftX = event.clientX - candle.getBoundingClientRect().left;
     let shiftY = event.clientY - candle.getBoundingClientRect().top;
 
+    candle.style.position = 'absolute';
+    candle.style.zIndex = 1000;
+    document.body.append(candle);
+
+    moveAt(event.pageX, event.pageY);
+
     function moveAt(pageX, pageY) {
         candle.style.left = pageX - shiftX + 'px';
         candle.style.top = pageY - shiftY + 'px';
