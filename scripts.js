@@ -2,7 +2,11 @@ const candle = document.getElementById('candle');
 const cake = document.getElementById('cake');
 const message = document.getElementById('message');
 
+let isDraggable = true;
+
 candle.onmousedown = function(event) {
+    if (!isDraggable) return;
+
     let shiftX = event.clientX - candle.getBoundingClientRect().left;
     let shiftY = event.clientY - candle.getBoundingClientRect().top;
 
@@ -12,10 +16,14 @@ candle.onmousedown = function(event) {
     }
 
     function onMouseMove(event) {
+        if (!isDraggable) return;
+
         moveAt(event.pageX, event.pageY);
 
         if (isOverlapping(cake, candle)) {
             message.style.display = 'block';
+            isDraggable = false;
+            document.removeEventListener('mousemove', onMouseMove);
         }
     }
 
