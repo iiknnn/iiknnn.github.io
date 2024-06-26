@@ -1,14 +1,54 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     margin: 0;
-    padding: 20px;
+    background-color: #f0f0f0;
 }
 
-h1 {
-    color: #333;
+.container {
+    position: relative;
+    width: 300px;
+    height: 400px;
 }
 
-p {
-    color: #666;
+.cake, .candle {
+    position: absolute;
+}
+
+.cake {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+.candle {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    cursor: move;
+}
+
+.message {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    font-family: 'Arial', sans-serif;
+    color: #ff69b4;
+    display: none;
+    animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
